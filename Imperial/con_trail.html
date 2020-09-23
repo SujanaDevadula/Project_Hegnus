@@ -1,0 +1,274 @@
+    <!-- ======= Contact Section ======= -->
+    <section id="contact">
+      <div class="container wow fadeInUp">
+        <div class="row">
+          <div class="col-md-12">
+<!--            <h3 class="section-title">Contact Us</h3>
+-->
+              
+              
+                <center> <h2 class="about-title" style="font-size: 35px;"><b>Contact Us</b></h2></center>
+              
+            <div class="section-title-divider"></div>
+<!--            <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>-->
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-3 col-md-4" style="margin-top:60px;">
+            <div class="info">
+              <div>
+                <i class="fa fa-map-marker"></i>
+                <p>A108 Adam Street<br>New York, NY 535022</p>
+              </div>
+
+              <div>
+                <i class="fa fa-envelope"></i>
+                <p>info@example.com</p>
+              </div>
+
+              <div>
+                <i class="fa fa-phone"></i>
+                <p>+1 5589 55488 55s</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-5 col-md-8">
+              
+<!--
+              <div class="wrapper">
+
+  <div id="error_message">
+     
+  </div>
+  <form action="" id="myform" onsubmit = "return validate();">
+    <div class="input_field">
+        <input type="text" name="name" placeholder="Name" id="name">
+    </div>
+    <div class="input_field">
+        <input type="text" name="subjet" placeholder="Subject" id="subject">
+    </div>
+    <div class="input_field">
+        <input type="text" name="phone" placeholder="Phone" id="phone">
+    </div>
+    <div class="input_field">
+        <input type="text" name="email" placeholder="Email" id="email">
+    </div>
+    <div class="input_field">
+        <textarea placeholder="Message" name="message" id="message"></textarea>
+    </div>
+    <div class="btn">
+        <input type="submit" name="submit">
+    </div>
+  </form>
+</div>
+-->
+              
+<!--            <div class="form">-->
+<!--              <form action="forms/contact.php" method="post" role="form" class="php-email-form">-->
+        
+
+               <form method="post" id="myform" action="co.php" id="myform"  onsubmit = "return validate();">
+                  
+        <div class="ridge">
+            <table align="center">
+             
+               <div >
+                  <tr>
+                    
+                     <td> <input type="text" size="50" name="name" id="name" placeholder="Your name"
+                      pattern="[a-zA-Z ]{4,}" title="Only letters allowed">
+<!--                         minlength="4" required -->
+                         <br/><br/></td>
+                  </tr>
+                 
+                 
+                  <tr>
+                     
+                     <td>
+                         
+
+                         <input type="email" size="50" id="email" name="email" placeholder="Your email"
+                        autocomplete="email" pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\.+(com)"        
+                                
+                            
+                     title="check the email pattern" required/>
+
+                         
+                         
+<!--                         <input type="email" placeholder="" autocomplete="email" pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\.+(com)" maxlength="256" required>-->
+
+                               
+                         <br/><br/></td>
+                     
+                    
+                  </tr>
+                   
+                    <tr>
+                    
+                     <td><input type="text" size="50" name="phone" id="phone" placeholder="Phone"
+                     pattern="[0-9]{10}" title="Enter only 10 digits"             
+                     required /><br/><br/></td>
+                     
+                    
+                  </tr>
+                  
+                    <tr>
+                  
+                     <td><input type="text" size="50" id="subject" name="subject" 
+                            pattern="[a-zA-Z0-9 ]{4,}" 
+                                title="Only letters allowed" 
+                                placeholder="Subject"
+                        required><br/><br/></td>
+                     
+                    
+                  </tr>
+                  
+                   
+                   
+                  
+                  <tr>
+                    
+                     <td> <textarea rows="5" cols="53" size="50" name="message" id="message" 
+            pattern="[a-zA-Z0-9 ]{4,}"                                  title="Only letters allowed"
+                         placeholder="Message "  required > </textarea><br/><br/></td>
+                  </tr>
+                  <tr>
+                     <td><input type="submit" name="submit" value="Send message"></td>
+                    
+                  </tr>
+                  <br/>
+               </div>
+            </table>
+         </div>
+      </form>
+
+                
+
+    
+
+
+
+
+                <script>
+function validate() {
+  alert("Thank you for contacting us");
+}
+</script>
+
+
+            </div>
+          </div>
+
+        </div>
+<!--      </div>-->
+        
+        
+        
+        
+    
+    </section><!-- End Contact Section -->
+    
+    
+    
+    
+
+
+
+<?php
+   $db_hostname = 'localhost';
+   
+   $db_username = 'root';
+   
+   $db_password = '';
+   
+   $db_server = mysqli_connect($db_hostname, $db_username, $db_password);
+   
+   if (!$db_server) die("Unable to connect to MySQL: " . mysqli_error());
+   
+   mysqli_select_db($db_server,'register')
+   
+   or die("Unable to select database: " . mysqli_error());
+   
+   if (isset($_POST['name'])&& isset($_POST['email']) && isset($_POST['phone']))
+   
+   {    
+   
+       $name=$_POST['name'];
+   
+       
+       $email=$_POST['email'];
+      
+       $phone=$_POST['phone'];
+      
+       $subject=$_POST['subject'];
+      
+       $message=$_POST['message'];
+      
+      
+   
+
+       
+        if (!preg_match("/^[a-zA-Z]*$/",$name))
+   {
+   $msg1 = "Only letters are allowed in user name field...";
+   echo "<script type='text/javascript'>
+      alert('$msg1');
+   </script>";
+   }
+       
+   
+        else if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+   {
+   $msg2 = "Invalid email format...";
+   echo "<script type='text/javascript'>
+      alert('$msg2');
+   </script>";
+   }
+       
+     else if(strlen($phone)!=10)
+   {
+   $msg3 = "Incorrect Mobile Number...";
+   echo "<script type='text/javascript'>
+      alert('$msg3');
+   </script>";
+   }   
+   
+       
+  
+      
+else{
+   
+      $query = "INSERT INTO contacts (name, email, phone, subject,message)VALUES ('$name', '$email','$phone','$subject','$message')";
+   
+   
+       if (mysqli_query($db_server, $query))
+   
+       {
+   
+//           echo"<script>alert('thank you for contacting us');</script>";
+//           
+//           echo "New record created successfully<br>";
+    
+   header("Location:ex.html");
+       }
+   
+       else
+   
+       {
+   
+             header("Location:err.html");
+           
+//           echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+   
+       }
+   
+   }
+   }
+   
+   
+  
+   
+   ?>
